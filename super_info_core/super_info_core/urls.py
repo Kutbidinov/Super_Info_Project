@@ -24,9 +24,9 @@ from blog.views import HomeView,ContactView,PublicationDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', HomeView.as_view()),
-    path('contact/', ContactView.as_view()),
-    path('publication_detail/', PublicationDetailView.as_view())
+    path('home/', HomeView.as_view(), name='home_url'),
+    path('contact/', ContactView.as_view(), name='contact_url'),
+    path('publication_detail/<int:pk>', PublicationDetailView.as_view(), name='publication_detail_url')
 
 ]
 
