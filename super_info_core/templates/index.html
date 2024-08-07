@@ -18,14 +18,14 @@
                 </div>                
             </div>            
             <div class="row tm-row">
+                {% for item in publication_list %}
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
                     <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-60">
                         <div class="tm-post-link-inner">
-                            <img src="{{ danislan.image.url }}" alt="Image" class="img-fluid">
+                            <img src="{{ item.image.url }}" width="500px" alt="Image" class="img-fluid">
                         </div>
-                        <span class="position-absolute tm-new-badge">New</span>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Simple and useful My Image</h2>
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }} </h2>
                     </a>                    
                     <p class="tm-pt-30">
                         There is a clickable image with beautiful hover effect and active title link for each post item. 
@@ -44,11 +44,10 @@
                     <hr class="tm-hr-primary">
                     <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-60">
                         <div class=" tm-post-link-inner">
-                            <img src="{% static 'img/Камалу Кхарис.jpg' %}" alt="Image" class="img-fluid">
+                            <img src="{{ item.image.url }}" alt="Image" class="img-fluid">
                         </div>
-                        <span class="position-absolute tm-new-badge">New</span>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">She could be President!</h2>
-                    </a>                    
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }} </h2>
+                    </a>
                     <p class="tm-pt-30">
                         <a rel="nofollow" href="https://templatemo.com/tm-553-xtra-blog" target="_blank">Super Info</a>  is a multi-purpose HTML CSS template from TemplateMo website.
                         Blog list, single post, about, contact pages are included. Left sidebar fixed width and content area is a fluid full-width.
@@ -66,12 +65,12 @@
                     <hr class="tm-hr-primary">
                     <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-20">
                         <div class="tm-post-link-inner">
-                            <img src="{% static 'img/Илон Маск.jpeg' %}" alt="Image" class="img-fluid">
+                            <img src="{{ item.image.url }}" alt="Image" class="img-fluid">
                         </div>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">How to become a billionaire in 5 minutes?</h2>
-                    </a>                    
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }}</h2>
+                    </a>
                     <p class="tm-pt-30">
-                        You are <u>allowed</u> to convert this template as any kind of CMS theme or template for your custom website builder. 
+                        You are <u>allowed</u> to convert this template as any kind of CMS theme or template for your custom website builder.
                         You can also use this for your clients. Thank you for choosing us.
                     </p>
                     <div class="d-flex justify-content-between tm-pt-45">
@@ -87,10 +86,10 @@
                     <hr class="tm-hr-primary">
                     <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-20">
                         <div class="tm-post-link-inner">
-                            <img src="{% static 'img/IT-RUN.png' %}" width="100" alt="Image" class="img-fluid">
+                            <img src="{{ item.image.url }}" width="100" alt="Image" class="img-fluid">
                         </div>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">The academy where I get my education!</h2>
-                    </a>                    
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }} </h2>
+                    </a>
                     <p class="tm-pt-30">
                         You are <u>not allowed</u> to re-distribute this template as a downloadable ZIP file on any template collection
                         website. This is strongly prohibited as we worked hard for this template. Please contact TemplateMo for more information.
@@ -107,10 +106,10 @@
                     <hr class="tm-hr-primary">
                     <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-20">
                         <div class="tm-post-link-inner">
-                            <img src="{% static 'img/Messi.jpg' %}" alt="Image" class="img-fluid">
+                            <img src="{{ item.image.url }}" alt="Image" class="img-fluid">
                         </div>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">I'd play football even for free!</h2>
-                    </a>                    
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }} </h2>
+                    </a>
                     <p class="tm-pt-30">
                         If you wish to kindly support us, please contact us or contribute a small PayPal amount to info [at] templatemo.com that is helpful for us.
                         <br>
@@ -129,10 +128,10 @@
                     <hr class="tm-hr-primary">
                     <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-20">
                         <div class="tm-post-link-inner">
-                            <img src="{% static 'img/img-06.jpg' %}" alt="Image" class="img-fluid">
+                            <img src="{{ item.image.url }}" alt="Image" class="img-fluid">
                         </div>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">I love you Kyrgyzstan!</h2>
-                    </a>                    
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }} </h2>
+                    </a>
                     <p class="tm-pt-30">
                         Quisque id ipsum vel sem maximus vulputate sed quis velit. Nunc vel turpis eget orci elementum cursus vitae in eros. Quisque vulputate nulla ut dolor consectetur luctus.
                     </p>
@@ -145,7 +144,9 @@
                         <a href=""> 88 comments </a>
                     </div>
                 </article>
+                {% endfor %}
             </div>
+
             <div class="row tm-row tm-mt-100 tm-mb-75">
                 <div class="tm-prev-next-wrapper">
                     <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
