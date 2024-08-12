@@ -5,12 +5,12 @@
 <body>
 
     <div class="container-fluid">
-        <main class="tm-main">
+        <main class="tm-main" style="background-color: white;">
             <!-- Search form -->
             <div class="row tm-row">
                 <div class="col-12">
                     <form method="GET" class="form-inline tm-mb-80 tm-search-form">                
-                        <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
+                        <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search" style="text-align:center;" >
                         <button class="tm-search-button" type="submit">
                             <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
                         </button>                                
@@ -21,127 +21,27 @@
                 {% for item in publication_list %}
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
-                    <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-60">
+                    <a href="{% url 'publication_detail_url' item.id %}" class="effect-lily tm-post-link tm-pt-60">
                         <div class="tm-post-link-inner">
                             <img src="{{ item.image.url }}" width="500px" alt="Image" class="img-fluid">
                         </div>
                         <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }} </h2>
                     </a>                    
-                    <p class="tm-pt-30">
-                        There is a clickable image with beautiful hover effect and active title link for each post item. 
-                        Left side is a sticky menu bar. Right side is a blog content that will scroll up and down.
-                    </p>
+                    <p> {{ item.description }}</p>
                     <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Hashtags: #Travel #Events</span>
-                        <span class="tm-color-primary">June 24, 2020</span>
+                        <span class="tm-color-primary">Hashtags: {% for hashtag in hashtags %}
+                            # {{ hashtag.title  }}
+                            {% endfor %}
+                        </span>
+                        <br>
+                    </div>
+                    <div>
+                        <span style="color: black">{{ item.create_at }} </span>
+
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between">
                         <a href=""> 36 comments </a>
-                    </div>
-                </article>
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class=" tm-post-link-inner">
-                            <img src="{{ item.image.url }}" alt="Image" class="img-fluid">
-                        </div>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }} </h2>
-                    </a>
-                    <p class="tm-pt-30">
-                        <a rel="nofollow" href="https://templatemo.com/tm-553-xtra-blog" target="_blank">Super Info</a>  is a multi-purpose HTML CSS template from TemplateMo website.
-                        Blog list, single post, about, contact pages are included. Left sidebar fixed width and content area is a fluid full-width.
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Hashtags: #Creative #Design #Business</span>
-                        <span class="tm-color-primary">June 16, 2020</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <a href=""> 5 comments</a>
-                    </div>
-                </article>
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-20">
-                        <div class="tm-post-link-inner">
-                            <img src="{{ item.image.url }}" alt="Image" class="img-fluid">
-                        </div>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }}</h2>
-                    </a>
-                    <p class="tm-pt-30">
-                        You are <u>allowed</u> to convert this template as any kind of CMS theme or template for your custom website builder.
-                        You can also use this for your clients. Thank you for choosing us.
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Hashtags: #Music #Audio</span>
-                        <span class="tm-color-primary">June 11, 2020</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <a href=""> 54 comments </a>
-                    </div>
-                </article>
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-20">
-                        <div class="tm-post-link-inner">
-                            <img src="{{ item.image.url }}" width="100" alt="Image" class="img-fluid">
-                        </div>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }} </h2>
-                    </a>
-                    <p class="tm-pt-30">
-                        You are <u>not allowed</u> to re-distribute this template as a downloadable ZIP file on any template collection
-                        website. This is strongly prohibited as we worked hard for this template. Please contact TemplateMo for more information.
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Hashtags: #Artworks #Design</span>
-                        <span class="tm-color-primary">June 4, 2020</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <a href=""> 50 comments </a>
-                    </div>
-                </article>
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-20">
-                        <div class="tm-post-link-inner">
-                            <img src="{{ item.image.url }}" alt="Image" class="img-fluid">
-                        </div>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }} </h2>
-                    </a>
-                    <p class="tm-pt-30">
-                        If you wish to kindly support us, please contact us or contribute a small PayPal amount to info [at] templatemo.com that is helpful for us.
-                        <br>
-                        Title #099 New #0CC <br>
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Hashtags: #Creative #Design #Business #Audio</span>
-                        <span class="tm-color-primary">May 31, 2020</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <a href=""> 84 comments </a>
-                    </div>
-                </article>
-                <article class="col-12 col-md-6 tm-post">
-                    <hr class="tm-hr-primary">
-                    <a href="publication-detail.html" class="effect-lily tm-post-link tm-pt-20">
-                        <div class="tm-post-link-inner">
-                            <img src="{{ item.image.url }}" alt="Image" class="img-fluid">
-                        </div>
-                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{ item.title }} </h2>
-                    </a>
-                    <p class="tm-pt-30">
-                        Quisque id ipsum vel sem maximus vulputate sed quis velit. Nunc vel turpis eget orci elementum cursus vitae in eros. Quisque vulputate nulla ut dolor consectetur luctus.
-                    </p>
-                    <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Hashtags: #Visual #Artworks</span>
-                        <span class="tm-color-primary">June 16, 2020</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <a href=""> 88 comments </a>
                     </div>
                 </article>
                 {% endfor %}
@@ -157,7 +57,7 @@
                     <nav class="tm-paging-nav d-inline-block">
                         <ul>
                             <li class="tm-paging-item active">
-                                <a href="#" class="mb-2 tm-btn tm-paging-link">1</a>
+                                <a href="" class="mb-2 tm-btn tm-paging-link">1</a>
                             </li>
                             <li class="tm-paging-item">
                                 <a href="#" class="mb-2 tm-btn tm-paging-link">2</a>
