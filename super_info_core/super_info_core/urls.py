@@ -19,12 +19,13 @@ from django.conf.urls.static import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from blog.views import HomeView,ContactView,PublicationDetailView,CreatePublicationCommentView, client_contact_create_view
+from blog.views import HomeView,ContactView,PublicationDetailView,CreatePublicationCommentView, client_contact_create_view, HomeSearchView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', HomeView.as_view(), name='home_url'),
+    path('home/search/', HomeSearchView.as_view(), name='home-search-url'),
     path('contact/', ContactView.as_view(), name='contact_url'),
     path('publication_detail/<int:pk>', PublicationDetailView.as_view(), name='publication_detail_url'),
     path('publication-detail/<int:pk>/create-comment/', CreatePublicationCommentView.as_view()),

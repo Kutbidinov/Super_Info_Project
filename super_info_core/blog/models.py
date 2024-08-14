@@ -53,11 +53,10 @@ class Publication(models.Model):
 
 
 class PublicationComment(models.Model):
+    name = models.CharField(max_length=255, null=True)
     publication = models.ForeignKey(Publication, on_delete=models.CASCADE, related_name='comments')
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-
-
 
 
 
@@ -73,6 +72,9 @@ class ClientContact(models.Model):
     class Meta:
         verbose_name_plural = 'Клиент Контакты'
         verbose_name = 'Клиент Контакты'
+
+
+
 
 
 

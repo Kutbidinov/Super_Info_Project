@@ -1,9 +1,10 @@
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
 
 from django.views.generic import TemplateView
-from blog.models import Publication, PublicationComment, ClientContact
+from blog.models import Publication, PublicationComment, ClientContact, Category
 from blog.telegram_bot import bot
 
 class HomeView(TemplateView):
@@ -11,12 +12,29 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = {
-            "publication_list": Publication.objects.all(),
+            "publication_list": Publication.objects.filter(is_active=True),
             "hashtags": Publication.objects.all(),
-            'publication_list': Publication.objects.filter(is_active=True)
+
 
         }
         return context
+
+
+
+class HomeSearchView(TemplateView):
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        search_word = self.request.GET['query']
+        context = {
+            'publication_list': Publication.objects.filter(
+                Q(title__icontains=search_word) | Q(description__icontains=search_word) & Q(is_active=True)
+            )
+        }
+        return context
+
+
+
 
 
 
@@ -35,7 +53,12 @@ class PublicationDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         publication_pk = kwargs['pk']
         context = {
-            "publication": Publication.objects.get(id=publication_pk)
+            "publication": Publication.objects.get(id=publication_pk),
+            'publication_list': Publication.objects.all(),
+            "categories": Category.objects.all(),  # Добавляем категории в контекст
+            "comment_list": Publication.objects.get(id=kwargs['pk']).comments.all()
+
+
         }
         return context
 
@@ -56,6 +79,12 @@ class CreatePublicationCommentView(View):
 
 
 
+
+
+
+
+
+
 def client_contact_create_view(request):
     print("Данные о ПОСТ запроса!",  request.POST)
     name = request.POST.get("name")
@@ -64,6 +93,7 @@ def client_contact_create_view(request):
     message = request.POST.get('message')
     ClientContact.objects.create(name=name, email=email,  subject=subject, message=message)
     return HttpResponse('<h1> Ваше сообщения! </h1>')
+
 
 
 
