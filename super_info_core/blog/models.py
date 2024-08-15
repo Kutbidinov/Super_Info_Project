@@ -39,7 +39,7 @@ class Publication(models.Model):
     hashtags = models.ManyToManyField(Hashtag, null=True, related_name='hashtags')
     title = models.CharField(max_length=255)
     short_description = models.TextField()
-    description = models.TextField()
+    description = models.TextField( verbose_name="Описания", blank=True)
     image = models.ImageField()
     create_at = models.DateField(null=True)
     is_active = models.BooleanField(default=True)
