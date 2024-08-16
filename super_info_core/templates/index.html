@@ -18,7 +18,7 @@
                 </div>                
             </div>            
             <div class="row tm-row">
-                {% for item in publication_list %}
+                {% for item in page_obj %}
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
                     <a href="{% url 'publication_detail_url' item.id %}" class="effect-lily tm-post-link tm-pt-60">
@@ -29,8 +29,8 @@
                     </a>                    
                     <p> {{ item.description }}</p>
                     <div class="d-flex justify-content-between tm-pt-45">
-                        <span class="tm-color-primary">Hashtags: {% for hashtag in hashtags %}
-                            # {{ hashtag.title  }}
+                        <span class="tm-color-primary">Hashtags: {% for hashtag in item.hashtags.all %}
+                            {{ hashtag.title  }}
                             {% endfor %}
                         </span>
                         <br>
@@ -49,29 +49,27 @@
 
             <div class="row tm-row tm-mt-100 tm-mb-75">
                 <div class="tm-prev-next-wrapper">
-                    <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
-                    <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
+                    {% if page_obj.has_previous %}
+                        <a style="color:red; background-color: blue;" href="?page={{ page_obj.previous_page_number }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Previous</a>
+                    {% endif %}
+
+                    {% if page_obj.has_next %}
+                        <a style="color: black;  background-color: green;" href="?page={{ page_obj.next_page_number }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
+                    {% endif %}
                 </div>
                 <div class="tm-paging-wrapper">
                     <span class="d-inline-block mr-3">Page</span>
                     <nav class="tm-paging-nav d-inline-block">
                         <ul>
-                            <li class="tm-paging-item active">
-                                <a href="" class="mb-2 tm-btn tm-paging-link">1</a>
+                            {% for p in page_obj.paginator.page_range %}
+                            <li class="tm-paging-item {% if page_obj_number == p %} active {% endif %}">
+                                <a  style="color:red;  background-color: blue;" href="?page={{ p }}" class="mb-2 tm-btn tm-paging-link">{{ p }}</a>
                             </li>
-                            <li class="tm-paging-item">
-                                <a href="#" class="mb-2 tm-btn tm-paging-link">2</a>
-                            </li>
-                            <li class="tm-paging-item">
-                                <a href="#" class="mb-2 tm-btn tm-paging-link">3</a>
-                            </li>
-                            <li class="tm-paging-item">
-                                <a href="#" class="mb-2 tm-btn tm-paging-link">4</a>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </nav>
                 </div>                
-            </div>            
+            </div>
             {% include 'footer-part.html' %}
         </main>
     </div>

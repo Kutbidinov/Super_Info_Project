@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -5,15 +6,21 @@ from django.views import View
 
 from django.views.generic import TemplateView
 from blog.models import Publication, PublicationComment, ClientContact, Category
-from blog.telegram_bot import bot
 
 class HomeView(TemplateView):
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
+        publications = Publication.objects.filter(is_active=True)
+
+        paginator = Paginator(publications, 1)
+
+        page_number = self.request.GET['page']
+
+        page_obj = paginator.get_page(page_number)
+
         context = {
-            "publication_list": Publication.objects.filter(is_active=True),
-            "hashtags": Publication.objects.all(),
+            "page_obj": page_obj
 
 
         }
