@@ -50,20 +50,21 @@
             <div class="row tm-row tm-mt-100 tm-mb-75">
                 <div class="tm-prev-next-wrapper">
                     {% if page_obj.has_previous %}
-                        <a style="color:red; background-color: blue;" href="?page={{ page_obj.previous_page_number }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Previous</a>
+                        <a style="color:red; background-color: blue;" href="?page={{ page_obj.previous_page_number }}&query={{ request.GET.query }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Previous</a>
                     {% endif %}
-
                     {% if page_obj.has_next %}
-                        <a style="color: black;  background-color: green;" href="?page={{ page_obj.next_page_number }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
+                        <a style="color: black; background-color: green;" href="?page={{ page_obj.next_page_number }}&query={{ request.GET.query }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
                     {% endif %}
                 </div>
                 <div class="tm-paging-wrapper">
-                    <span class="d-inline-block mr-3">Page</span>
+                    <h2 class="d-inline-block mr-3">Page:</h2>
                     <nav class="tm-paging-nav d-inline-block">
+                        <br>
+
                         <ul>
                             {% for p in page_obj.paginator.page_range %}
                             <li class="tm-paging-item {% if page_obj_number == p %} active {% endif %}">
-                                <a  style="color:red;  background-color: blue;" href="?page={{ p }}" class="mb-2 tm-btn tm-paging-link">{{ p }}</a>
+                                <a href="?page={{ p }}&query={{ request.GET.query }}" class="mb-2 tm-btn tm-paging-link">{{ p }}</a>
                             </li>
                             {% endfor %}
                         </ul>

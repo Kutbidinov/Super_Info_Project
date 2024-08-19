@@ -6,6 +6,8 @@ from django.views import View
 
 from django.views.generic import TemplateView
 from blog.models import Publication, PublicationComment, ClientContact, Category
+from blog.telegram_bot import bot
+
 
 class HomeView(TemplateView):
     template_name = 'index.html'
@@ -13,9 +15,12 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         publications = Publication.objects.filter(is_active=True)
 
-        paginator = Paginator(publications, 1)
+        paginator = Paginator(publications, 2)
+        try:
+            page_number = self.request.GET['page']
 
-        page_number = self.request.GET['page']
+        except KeyError:
+            page_number = 1
 
         page_obj = paginator.get_page(page_number)
 
@@ -80,13 +85,9 @@ class CreatePublicationCommentView(View):
         comment_text = request.POST['comment_text']
 
         PublicationComment.objects.create(publication=publication, text=comment_text)
-        bot.send_message(chat_id=123456789, text='Вашей публикации доступен Сообщения: Не забудьте  проверить!')
+        bot.send_message(chat_id=123456789, text='Вашей публикации доступен Сообщения: Не забудьте  проверить!')\
 
-        return redirect('publication-detail', pk=publication_pk)
-
-
-
-
+        return redirect('publication_detail_url', pk=publication_pk)
 
 
 
@@ -100,6 +101,9 @@ def client_contact_create_view(request):
     message = request.POST.get('message')
     ClientContact.objects.create(name=name, email=email,  subject=subject, message=message)
     return HttpResponse('<h1> Ваше сообщения! </h1>')
+
+
+
 
 
 

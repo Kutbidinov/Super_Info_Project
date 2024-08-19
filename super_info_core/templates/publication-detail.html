@@ -32,7 +32,7 @@
 
                             <!-- Comments -->
                             <div>
-                                <h2 class="tm-color-primary tm-post-title">Comments</h2>
+                                <h2 class="tm-color-primary tm-post-title">Каментарии</h2>
                                 <hr class="tm-hr-primary tm-mb-45">
                                 {% for comment in comment_list %}
                                  <div class="tm-comment-reply tm-mb-45">
@@ -47,16 +47,17 @@
                                     <span class="d-block text-right tm-color-primary">{{ comment.created_at }}q</span>
                                 </div>
                                 {% endfor %}
-                                <form action="" class="mb-5 tm-comment-form">
-                                    <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
+                                <form action="{% url 'publication_detail_url' publication.pk %}/create-comment/" class="mb-5 tm-comment-form" method="post">
+                                    {% csrf_token %}
+                                    <h2 class="tm-color-primary tm-post-title mb-4">Ваши Коментарии</h2>
                                     <div class="mb-4">
-                                        <input class="form-control" name="name" type="text" placeholder="Your name">
+                                        <input class="form-control" name="publication" type="text" placeholder="Your name">
                                     </div>
                                     <div class="mb-4">
-                                        <textarea class="form-control" name="message" rows="6" placeholder="Your comment text"></textarea>
+                                        <textarea class="form-control" name="comment_text" rows="6" placeholder="Your comment text"></textarea>
                                     </div>
                                     <div class="text-right">
-                                        <button class="tm-btn tm-btn-primary tm-btn-small">Submit</button>
+                                        <button class="tm-btn tm-btn-primary tm-btn-small">Отправить:</button>
                                     </div>
                                 </form>
                             </div>
@@ -74,7 +75,7 @@
                             <hr class="mb-3 tm-hr-primary">
                             <h2 class="tm-mb-40 tm-post-title tm-color-primary">Related Posts</h2>
                             {% for item in publication_list %}
-                            <a href="#" class="d-block tm-mb-40">
+                            <a href="{% url 'publication_detail_url' item.pk  %}" class="d-block tm-mb-40">
                                 <figure>
                                     <img src="{{ item.image.url }}" alt="Image" class="mb-3 img-fluid">
                                     <figcaption class="tm-color-primary">{{ item.description }}</figcaption>

@@ -18,21 +18,32 @@ Including another URLconf
 from django.conf.urls.static import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from blog.views import HomeView,ContactView,PublicationDetailView,CreatePublicationCommentView, client_contact_create_view, HomeSearchView
 
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n'))
+]
+
+
+
+urlpatterns += i18n_patterns (
     path('admin/', admin.site.urls),
     path('home/', HomeView.as_view(), name='home_url'),
     path('home/search/', HomeSearchView.as_view(), name='home-search-url'),
     path('contact/', ContactView.as_view(), name='contact_url'),
     path('publication_detail/<int:pk>', PublicationDetailView.as_view(), name='publication_detail_url'),
-    path('publication-detail/<int:pk>/create-comment/', CreatePublicationCommentView.as_view()),
+    path('publication-detail/<int:pk>/create-comment/', CreatePublicationCommentView.as_view(), name='create_comment_url'),
     path('home/client-contact-create/', client_contact_create_view, name='client_contact_create')
 
 
-]
+)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
 
