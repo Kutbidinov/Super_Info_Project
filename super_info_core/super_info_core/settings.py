@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware'
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -72,6 +72,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'super_info_core.wsgi.application'
 
@@ -113,7 +114,6 @@ LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
 
 USE_TZ = True
 
@@ -141,11 +141,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 USE_I18N = True
 
 gettext = lambda s: s
-LANGUAGE = (
-    ('ru', gettext("Russian")),
-    ('kg', gettext("Kyrgyz")),
 
+LANGUAGES = (
+    ('ru', gettext('Russian')),
+    ('kg', gettext('Kyrgyz')),
 )
+
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale/',

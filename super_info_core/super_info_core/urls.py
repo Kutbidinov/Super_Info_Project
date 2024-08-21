@@ -16,18 +16,17 @@ Including another URLconf
 """
 
 from django.conf.urls.static import settings
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from blog.views import HomeView,ContactView,PublicationDetailView,CreatePublicationCommentView, client_contact_create_view, HomeSearchView
 
-from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('i18n/', include('django.conf.urls.i18n'))
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
-
 
 
 urlpatterns += i18n_patterns (
