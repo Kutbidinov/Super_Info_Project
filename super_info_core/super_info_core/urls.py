@@ -20,7 +20,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from blog.views import HomeView,ContactView,PublicationDetailView,CreatePublicationCommentView, client_contact_create_view, HomeSearchView
+from blog.views import HomeView, ContactView, PublicationDetailView, CreatePublicationCommentView, client_contact_create_view, HomeSearchView
 
 
 urlpatterns = [
@@ -29,8 +29,8 @@ urlpatterns = [
 ]
 
 
+
 urlpatterns += i18n_patterns (
-    path('admin/', admin.site.urls),
     path('home/', HomeView.as_view(), name='home_url'),
     path('home/search/', HomeSearchView.as_view(), name='home-search-url'),
     path('contact/', ContactView.as_view(), name='contact_url'),

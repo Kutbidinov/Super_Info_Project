@@ -25,18 +25,18 @@ https://templatemo.com/tm-553-xtra-blog
             </button>
             <div class="tm-site-header">
                 <div class="mb-3 mx-auto tm-site-logo"><i class="fas fa-times fa-2x"></i></div>
-                <h1 style="color: yellow" class="text-center">{% trans My companion %} </h1>
-                <h1 class="text-center"> Wait for me✋</h1>
+                <h1 style="color: yellow" class="text-center">{% trans 'Моя компания' %} </h1>
+                <h1 class="text-center"> {% trans 'Подожди' %} </h1>
             </div>
             <nav class="tm-nav" id="tm-nav">
                 <ul>
                     <li class="tm-nav-item active"><a href="{% url 'home_url' %}    " class="tm-nav-link">
                         <i class="fas fa-home"></i>
-                        Blog Home
+                        {% trans 'Blog Home' %}
                     </a></li>
                     <li class="tm-nav-item"><a href="{% url 'contact_url' %}" class="tm-nav-link">
                         <i class="far fa-comments"></i>
-                        Contact Us
+                        {% trans 'Contact Us' %}
                     </a></li>
                 </ul>
             </nav>

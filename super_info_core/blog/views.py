@@ -33,6 +33,10 @@ class HomeView(TemplateView):
 
 
 
+
+
+
+
 class HomeSearchView(TemplateView):
     template_name = 'index.html'
 

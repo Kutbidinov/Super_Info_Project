@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "modeltranslation"
+    "modeltranslation",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -142,9 +142,10 @@ USE_I18N = True
 
 gettext = lambda s: s
 
+
 LANGUAGES = (
     ('ru', gettext('Russian')),
-    ('kg', gettext('Kyrgyz')),
+    ('ky', gettext('Kyrgyz')),
 )
 
 
@@ -153,6 +154,7 @@ LOCALE_PATHS = [
 
 ]
 
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 
 
 
