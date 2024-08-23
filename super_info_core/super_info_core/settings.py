@@ -130,6 +130,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'assets'
 ]
+
 STATIC_ROOT = 'static' # Чтобы python manage.py collectatic сработал!
 
 
@@ -146,6 +147,8 @@ gettext = lambda s: s
 LANGUAGES = (
     ('ru', gettext('Russian')),
     ('ky', gettext('Kyrgyz')),
+    ('en', 'English'),
+
 )
 
 

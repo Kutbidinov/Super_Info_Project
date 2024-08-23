@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-22 13:50+0600\n"
+"POT-Creation-Date: 2024-08-23 17:56+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: .\super_info_core\settings.py:147
+#: .\super_info_core\settings.py:148
 msgid "Russian"
 msgstr "Россия"
 
-#: .\super_info_core\settings.py:148
+#: .\super_info_core\settings.py:149
 msgid "Kyrgyz"
 msgstr "Кыргыз"
 

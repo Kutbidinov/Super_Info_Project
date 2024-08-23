@@ -10,7 +10,6 @@ class CategoryTranslationOptions(TranslationOptions):
 
 
 
-
 @register(Publication)
 class PublicationTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
