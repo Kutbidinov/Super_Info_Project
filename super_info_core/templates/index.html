@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 
 <body>
@@ -10,7 +11,7 @@
             <div class="row tm-row">
                 <div class="col-12">
                     <form action="{% url 'home-search-url' %}" method="GET" class="form-inline tm-mb-80 tm-search-form">
-                        <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search" style="text-align:center;" >
+                        <input class="form-control tm-search-input" name="query" type="text" placeholder="{% trans 'Search...' %}" aria-label="Search" style="text-align:center;" >
                         <button class="tm-search-button" type="submit">
                             <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
                         </button>                                
@@ -41,7 +42,7 @@
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between">
-                        <a href=""> 36 comments </a>
+                        <a href=""> {% trans '36 comments' %} </a>
                     </div>
                 </article>
                 {% endfor %}
@@ -50,14 +51,14 @@
             <div class="row tm-row tm-mt-100 tm-mb-75">
                 <div class="tm-prev-next-wrapper">
                     {% if page_obj.has_previous %}
-                        <a style="color:red; background-color: blue;" href="?page={{ page_obj.previous_page_number }}&query={{ request.GET.query }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Previous</a>
+                        <a style="color:red; background-color: blue;" href="?page={{ page_obj.previous_page_number }}&query={{ request.GET.query }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">{% trans 'Previous' %} </a>
                     {% endif %}
                     {% if page_obj.has_next %}
-                        <a style="color: black; background-color: green;" href="?page={{ page_obj.next_page_number }}&query={{ request.GET.query }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
+                        <a style="color: black; background-color: green;" href="?page={{ page_obj.next_page_number }}&query={{ request.GET.query }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next">{% trans 'Next' %} </a>
                     {% endif %}
                 </div>
                 <div class="tm-paging-wrapper">
-                    <h2 class="d-inline-block mr-3">Page:</h2>
+                    <h2 class="d-inline-block mr-3">{% trans 'Page' %}:</h2>
                     <nav class="tm-paging-nav d-inline-block">
                         <br>
 

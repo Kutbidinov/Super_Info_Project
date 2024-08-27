@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-23 17:56+0600\n"
+"POT-Creation-Date: 2024-08-24 23:32+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,3 +41,47 @@ msgstr "Жэке Уй"
 #: .\templates\base.html:39
 msgid "Contact Us"
 msgstr "Биз Менен Байланышыңыз"
+
+#: .\templates\index.html:14
+msgid "Search..."
+msgstr "Изилдоо..."
+
+#: .\templates\index.html:45
+msgid "36 comments"
+msgstr "36 комментария"
+
+#: .\templates\index.html:54
+msgid "Previous"
+msgstr "Кайтуу"
+
+#: .\templates\index.html:57
+msgid "Next"
+msgstr "Откоруу"
+
+#: .\templates\index.html:61
+msgid "Page"
+msgstr "Барак"
+
+#: .\templates\publication-detail.html:36
+msgid "Каментарии"
+msgstr "Комментариялар"
+
+#: .\templates\publication-detail.html:53
+msgid "Ваши Коментарии"
+msgstr "Сиздин коментарияларыныз"
+
+#: .\templates\publication-detail.html:55
+msgid "Your name"
+msgstr "Сиздин Аты жонунуз"
+
+#: .\templates\publication-detail.html:58
+msgid "Your comment text"
+msgstr "Сиздин текстыныз"
+
+#: .\templates\publication-detail.html:61
+msgid "Отправить"
+msgstr "Жонотуу"
+
+#: .\templates\publication-detail.html:70
+msgid "My Categories"
+msgstr "Менин Категориярым"

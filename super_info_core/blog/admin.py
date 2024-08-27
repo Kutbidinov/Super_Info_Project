@@ -1,11 +1,18 @@
+from django import forms
+from modeltranslation.admin import TranslationAdmin
 from django.contrib import admin
 from blog.models import Publication, Category, Hashtag, PublicationComment, ClientContact
 
 
+
 @admin.register(Publication)
-class PublicationAdmin(admin.ModelAdmin):
+class PublicationAdmin(TranslationAdmin):
     list_display = ['title']
 
+    # description_ru = forms.CharField(label="Описания", widget=CKEditorUploadingWidget())
+    # description_ky = forms.CharField(label="Описания", widget=CKEditorUploadingWidget())
+    #
+    #
 
 @admin.register(Hashtag)
 class HashtadAdmin(admin.ModelAdmin):
@@ -13,7 +20,7 @@ class HashtadAdmin(admin.ModelAdmin):
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display = ["title"]
 
 
