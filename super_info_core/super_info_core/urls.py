@@ -31,7 +31,7 @@ urlpatterns = [
 
 
 urlpatterns += i18n_patterns (
-    path('home/', HomeView.as_view(), name='home_url'),
+    path('', HomeView.as_view(), name='home_url'),
     path('home/search/', HomeSearchView.as_view(), name='home-search-url'),
     path('contact/', ContactView.as_view(), name='contact_url'),
     path('publication_detail/<int:pk>', PublicationDetailView.as_view(), name='publication_detail_url'),

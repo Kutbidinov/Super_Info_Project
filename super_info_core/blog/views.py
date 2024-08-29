@@ -104,7 +104,7 @@ def client_contact_create_view(request):
     subject = request.POST.get('subject')
     message = request.POST.get('message')
     ClientContact.objects.create(name=name, email=email,  subject=subject, message=message)
-    return HttpResponse('<h1> Ваше сообщения! </h1>')
+    return HttpResponse('<h1> Ваше сообщения отправлено! </h1>')
 
 
 
